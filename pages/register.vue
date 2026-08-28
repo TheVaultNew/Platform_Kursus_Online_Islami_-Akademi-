@@ -533,26 +533,38 @@ const getVaNumber = computed(() => {
         </div>
       </div>
 
-      <div v-else-if="formData.programType !== 'scholarship'" class="p-5 rounded-2xl bg-cream-100 border border-gold-500/40 space-y-4">
-        <span class="px-3 py-1 rounded-full bg-gold-400 text-emerald-950 font-bold text-[11px] uppercase tracking-wider">
-          {{ formData.paymentMethod === 'bsi' ? 'Rekening Bank Syariah Indonesia (BSI)' : 'Nomor Virtual Account' }}
-        </span>
+      <div v-else-if="formData.programType !== 'scholarship'" class="p-4 sm:p-5 rounded-2xl bg-cream-100 border border-gold-500/40 space-y-4">
+        <div class="space-y-1 text-center sm:text-left">
+          <span class="px-3 py-1 rounded-full bg-gold-400 text-emerald-950 font-bold text-[10px] sm:text-[11px] uppercase tracking-wider inline-block shadow-sm">
+            {{ formData.paymentMethod === 'bsi' ? 'Rekening Bank Syariah Indonesia (BSI)' : 'Nomor Virtual Account' }}
+          </span>
+          <h4 class="font-display text-sm sm:text-base font-bold text-emerald-950 pt-1">
+            Silakan Transfer ke Nomor Berikut:
+          </h4>
+        </div>
         
-        <div class="p-4 rounded-xl bg-cream-50 border border-cream-300 flex items-center justify-between gap-3 shadow-inner">
-          <div class="space-y-0.5">
-            <span class="text-[10px] uppercase font-bold text-charcoal-500">Nomor Rekening / VA:</span>
-            <p class="font-mono text-xl font-bold text-emerald-950">{{ getVaNumber }}</p>
-            <p class="text-xs text-charcoal-600">a.n. <strong>Yayasan Darul Hikmah Akademi</strong></p>
+        <!-- Box Nomor Rekening / VA (Responsive) -->
+        <div class="p-3.5 sm:p-4 rounded-2xl bg-cream-50 border border-cream-300 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
+          <div class="space-y-1 min-w-0 flex-1">
+            <span class="text-[10px] uppercase font-bold text-charcoal-500 tracking-wider block">
+              {{ formData.paymentMethod === 'bsi' ? 'Nomor Rekening BSI' : 'Nomor Virtual Account' }}
+            </span>
+            <p class="font-mono text-base sm:text-lg lg:text-xl font-bold text-emerald-950 tracking-wider select-all break-all sm:break-normal">
+              {{ getVaNumber }}
+            </p>
+            <p class="text-[11px] sm:text-xs text-charcoal-600">
+              a.n. <strong class="text-emerald-950">Yayasan Darul Hikmah Akademi</strong>
+            </p>
           </div>
 
           <button
             type="button"
-            class="px-4 py-2 rounded-xl bg-emerald-900 text-cream-50 text-xs font-bold flex items-center gap-1.5 cursor-pointer"
+            class="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-emerald-900 hover:bg-emerald-850 text-cream-50 text-xs font-bold flex items-center justify-center gap-1.5 cursor-pointer shadow transition-all active:scale-95 shrink-0"
             @click="copyToClipboard(getVaNumber)"
           >
             <Check v-if="isCopied" class="w-4 h-4 text-gold-400" />
             <Copy v-else class="w-4 h-4" />
-            <span>{{ isCopied ? 'Tersalin!' : 'Salin' }}</span>
+            <span>{{ isCopied ? 'Tersalin!' : 'Salin Nomor' }}</span>
           </button>
         </div>
       </div>
