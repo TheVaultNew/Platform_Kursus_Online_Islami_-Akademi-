@@ -80,12 +80,12 @@ defineEmits<{
     </div>
 
     <!-- Category Pills Tabs -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+    <div class="flex items-center gap-2 overflow-x-auto pb-1.5 scrollbar-none">
       <button
         v-for="cat in categories"
         :key="cat.id"
         type="button"
-        class="px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer"
+        class="px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer shrink-0"
         :class="[
           selectedCategory === cat.id
             ? 'bg-emerald-900 text-cream-50 shadow-sm'
@@ -98,22 +98,23 @@ defineEmits<{
     </div>
 
     <!-- Level Filter Bar & Active Filter Counters -->
-    <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-charcoal-600 pt-1 border-t border-cream-200">
-      <div class="flex items-center gap-2">
-        <span class="font-semibold text-emerald-950 flex items-center gap-1">
+    <div class="pt-3 border-t border-cream-200 space-y-3">
+      <!-- Level Filter Row with Flex Wrap -->
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="font-bold text-emerald-950 flex items-center gap-1.5 shrink-0 text-xs">
           <Filter class="w-3.5 h-3.5 text-emerald-900" />
           Tingkat:
         </span>
-        <div class="flex items-center gap-1.5">
+        <div class="flex flex-wrap items-center gap-1.5">
           <button
             v-for="lvl in levels"
             :key="lvl.id"
             type="button"
-            class="px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors"
+            class="px-2.5 sm:px-3 py-1 rounded-lg text-[11px] sm:text-xs font-medium transition-all cursor-pointer"
             :class="[
               selectedLevel === lvl.id
-                ? 'bg-emerald-900/15 text-emerald-950 font-bold border border-emerald-900/30'
-                : 'text-charcoal-600 hover:bg-cream-200'
+                ? 'bg-emerald-900 text-cream-50 font-bold shadow-sm'
+                : 'bg-cream-200/70 text-charcoal-700 hover:bg-cream-300/80 border border-cream-300'
             ]"
             @click="$emit('update:selectedLevel', lvl.id)"
           >
@@ -122,17 +123,18 @@ defineEmits<{
         </div>
       </div>
 
-      <div class="flex items-center gap-3 ml-auto">
+      <!-- Results Count & Reset Filter Button (Responsive Row) -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-cream-200/70 text-xs">
         <span class="text-charcoal-600 font-medium">
-          Menampilkan <strong>{{ totalResults }}</strong> kursus
+          Menampilkan <strong class="text-emerald-950 font-bold">{{ totalResults }}</strong> kursus
         </span>
 
         <button
           type="button"
-          class="inline-flex items-center gap-1 text-charcoal-500 hover:text-emerald-900 hover:underline cursor-pointer"
+          class="inline-flex items-center gap-1.5 text-charcoal-600 hover:text-emerald-900 font-semibold hover:underline cursor-pointer py-1 px-2 rounded-md hover:bg-cream-200/60 transition-colors"
           @click="$emit('reset')"
         >
-          <RotateCcw class="w-3 h-3" />
+          <RotateCcw class="w-3.5 h-3.5 text-emerald-900" />
           <span>Reset Filter</span>
         </button>
       </div>

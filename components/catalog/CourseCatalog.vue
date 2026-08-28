@@ -49,7 +49,7 @@ defineEmits<{
       </div>
 
       <!-- Filter Controls -->
-      <div class="bg-cream-100/70 p-6 rounded-2xl border border-cream-300 shadow-sm">
+      <div class="bg-cream-100/70 p-4 sm:p-6 rounded-2xl border border-cream-300 shadow-sm">
         <CourseFilter
           v-model:search-query="searchQuery"
           v-model:selected-category="selectedCategory"
