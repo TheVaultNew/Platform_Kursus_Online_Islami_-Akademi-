@@ -1,0 +1,175 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color: #2B2723;
+    background-color: #F7F1E3;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  body {
+    @apply min-h-screen bg-cream-100 text-charcoal-900 antialiased selection:bg-emerald-900 selection:text-gold-300;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Spectral', Georgia, serif;
+  }
+
+  /* Accessible focus ring for WCAG AA */
+  :focus-visible {
+    @apply outline-none ring-2 ring-gold-500 ring-offset-2 ring-offset-cream-100;
+  }
+}
+
+/* Custom arabesque & subtle decorative textures */
+.bg-arabesque-subtle {
+  background-image: radial-gradient(#C9A227 0.85px, transparent 0.85px);
+  background-size: 24px 24px;
+}
+
+.bg-arabesque-dark {
+  background-image: radial-gradient(rgba(201, 162, 39, 0.18) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.gold-gradient-text {
+  background: linear-gradient(135deg, #DFC364 0%, #C9A227 50%, #9B7C16 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.emerald-gradient {
+  background: linear-gradient(135deg, #1B4D3E 0%, #154134 100%);
+}
+
+.cream-card {
+  background: #FCFAF6;
+  border: 1px solid #EFE3CA;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F1E3;
+}
+::-webkit-scrollbar-thumb {
+  background: #C9A227;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1B4D3E;
+}
+
+/* ========================================================= */
+/* PAGE & ROUTE TRANSITIONS                                  */
+/* ========================================================= */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.28s cubic-bezier(0.4, 0, 0.2, 1), transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.25s ease-in-out;
+}
+.layout-enter-from,
+.layout-leave-to {
+  opacity: 0;
+}
+
+/* ========================================================= */
+/* ANIMATION KEYFRAMES & MICRO-INTERACTIONS                  */
+/* ========================================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseGoldGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(201, 162, 39, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(201, 162, 39, 0.45);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.animate-gold-glow {
+  animation: pulseGoldGlow 3s ease-in-out infinite;
+}
+
+/* Interactive Card Hover Transforms */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+.hover-lift-subtle {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift-subtle:hover {
+  transform: translateY(-2px);
+}
+
+/* ========================================================= */
+/* SCROLL-DRIVEN BIDIRECTIONAL FADE IN & FADE OUT ANIMATION  */
+/* ========================================================= */
+.scroll-fade-init {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-fade-visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-fade-init {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
