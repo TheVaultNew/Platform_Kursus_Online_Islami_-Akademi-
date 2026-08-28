@@ -163,42 +163,82 @@ const getVaNumber = computed(() => {
               <X class="w-5 h-5" />
             </button>
 
-            <div class="space-y-2 max-w-md pr-6">
-              <div class="flex items-center gap-2">
-                <!-- Step 1 Badge -->
-                <span
-                  class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-colors"
-                  :class="currentStep === 1 ? 'bg-gold-400 text-emerald-950 shadow' : 'bg-emerald-900/80 text-cream-200'"
-                >
-                  1. Data Santri
-                </span>
-                <span class="text-cream-400">➔</span>
-                <!-- Step 2 Badge -->
-                <span
-                  class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-colors"
-                  :class="currentStep === 2 ? 'bg-gold-400 text-emerald-950 shadow' : 'bg-emerald-900/80 text-cream-200'"
-                >
-                  2. Checkout Pembayaran
-                </span>
-                <span class="text-cream-400">➔</span>
-                <!-- Step 3 Badge -->
-                <span
-                  class="px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider transition-colors"
-                  :class="currentStep === 3 ? 'bg-gold-400 text-emerald-950 shadow' : 'bg-emerald-900/80 text-cream-200'"
-                >
-                  3. Selesai
-                </span>
+            <!-- Header content wrapper -->
+            <div class="space-y-2 pr-10">
+
+              <!-- Step Indicator: Responsive Progress Steps -->
+              <div class="flex items-center gap-1 sm:gap-2">
+                
+                <!-- Step 1 -->
+                <div class="flex items-center gap-1.5 min-w-0">
+                  <span
+                    class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 transition-colors"
+                    :class="currentStep === 1 ? 'bg-gold-400 text-emerald-950 shadow' : currentStep > 1 ? 'bg-emerald-700 text-gold-300' : 'bg-emerald-900/80 text-cream-300'"
+                  >
+                    {{ currentStep > 1 ? '✓' : '1' }}
+                  </span>
+                  <span
+                    class="text-[10px] sm:text-xs font-semibold leading-tight transition-colors whitespace-nowrap"
+                    :class="currentStep === 1 ? 'text-gold-300' : currentStep > 1 ? 'text-emerald-400' : 'text-cream-400/60'"
+                  >
+                    <span class="hidden sm:inline">Data &amp; Pilihan Program</span>
+                    <span class="sm:hidden">Data</span>
+                  </span>
+                </div>
+
+                <!-- Arrow 1→2 -->
+                <span class="text-cream-500/60 text-xs shrink-0">›</span>
+
+                <!-- Step 2 -->
+                <div class="flex items-center gap-1.5 min-w-0">
+                  <span
+                    class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 transition-colors"
+                    :class="currentStep === 2 ? 'bg-gold-400 text-emerald-950 shadow' : currentStep > 2 ? 'bg-emerald-700 text-gold-300' : 'bg-emerald-900/80 text-cream-300'"
+                  >
+                    {{ currentStep > 2 ? '✓' : '2' }}
+                  </span>
+                  <span
+                    class="text-[10px] sm:text-xs font-semibold leading-tight transition-colors whitespace-nowrap"
+                    :class="currentStep === 2 ? 'text-gold-300' : currentStep > 2 ? 'text-emerald-400' : 'text-cream-400/60'"
+                  >
+                    <span class="hidden sm:inline">Checkout Pembayaran</span>
+                    <span class="sm:hidden">Checkout</span>
+                  </span>
+                </div>
+
+                <!-- Arrow 2→3 -->
+                <span class="text-cream-500/60 text-xs shrink-0">›</span>
+
+                <!-- Step 3 -->
+                <div class="flex items-center gap-1.5 min-w-0">
+                  <span
+                    class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 transition-colors"
+                    :class="currentStep === 3 ? 'bg-gold-400 text-emerald-950 shadow' : 'bg-emerald-900/80 text-cream-300'"
+                  >
+                    {{ currentStep === 3 ? '✓' : '3' }}
+                  </span>
+                  <span
+                    class="text-[10px] sm:text-xs font-semibold leading-tight transition-colors whitespace-nowrap"
+                    :class="currentStep === 3 ? 'text-gold-300' : 'text-cream-400/60'"
+                  >
+                    <span class="hidden sm:inline">Akses Aktif</span>
+                    <span class="sm:hidden">Aktif</span>
+                  </span>
+                </div>
+
               </div>
 
-              <h3 class="font-display text-xl sm:text-2xl font-bold text-cream-50 leading-snug">
-                <span v-if="currentStep === 1">Pendaftaran & Data Santri</span>
-                <span v-else-if="currentStep === 2">Fitur Checkout & Pembayaran</span>
+              <!-- Step title & program info -->
+              <h3 class="font-display text-lg sm:text-2xl font-bold text-cream-50 leading-snug">
+                <span v-if="currentStep === 1">Pendaftaran &amp; Data Santri</span>
+                <span v-else-if="currentStep === 2">Fitur Checkout &amp; Pembayaran</span>
                 <span v-else>Pendaftaran Berhasil!</span>
               </h3>
 
               <p class="text-xs text-cream-200/90 font-light truncate">
                 {{ target.title }} • <strong class="text-gold-300 font-bold">{{ formatPrice(target.price) }}</strong>
               </p>
+
             </div>
           </div>
 
