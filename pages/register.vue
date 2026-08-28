@@ -56,6 +56,14 @@ const isCopied = ref(false);
 const orderId = ref('');
 const orderDate = ref('');
 
+// Filter agar nomor WA hanya dapat diisi angka (0-9)
+const handlePhoneInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const digitsOnly = target.value.replace(/\D/g, '');
+  formData.value.phone = digitsOnly;
+  target.value = digitsOnly;
+};
+
 const selectedCourse = computed(() => {
   return COURSES_DATA.find(c => c.id === formData.value.selectedCourseId) || COURSES_DATA[0];
 });
@@ -87,6 +95,11 @@ const generateInvoice = () => {
 const proceedToCheckout = () => {
   if (!formData.value.name.trim() || !formData.value.email.trim() || !formData.value.phone.trim()) {
     alert('Mohon lengkapi Nama Lengkap, Email, dan Nomor WhatsApp Anda.');
+    return;
+  }
+
+  if (formData.value.phone.length < 9) {
+    alert('Nomor WhatsApp tidak valid (minimal 9 digit angka).');
     return;
   }
 
@@ -417,11 +430,15 @@ const getVaNumber = computed(() => {
                 <div class="relative">
                   <Phone class="w-4 h-4 text-emerald-900 absolute left-3.5 top-3.5" />
                   <input
-                    v-model="formData.phone"
+                    :value="formData.phone"
                     type="tel"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    maxlength="16"
                     required
-                    placeholder="081234567890"
+                    placeholder="081234567890 (Hanya Angka)"
                     class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-cream-100 border border-cream-300 text-charcoal-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-800"
+                    @input="handlePhoneInput"
                   />
                 </div>
               </div>

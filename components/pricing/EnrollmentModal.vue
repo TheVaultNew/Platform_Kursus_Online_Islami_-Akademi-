@@ -48,6 +48,14 @@ const isCopied = ref(false);
 const orderId = ref('');
 const orderDate = ref('');
 
+// Filter agar nomor WA hanya dapat diisi angka (0-9)
+const handlePhoneInput = (event: Event) => {
+  const target = event.target as HTMLInputElement;
+  const digitsOnly = target.value.replace(/\D/g, '');
+  formData.value.phone = digitsOnly;
+  target.value = digitsOnly;
+};
+
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(price);
 };
@@ -63,6 +71,11 @@ const generateInvoice = () => {
 const proceedToCheckout = () => {
   if (!formData.value.name.trim() || !formData.value.email.trim() || !formData.value.phone.trim()) {
     alert('Mohon lengkapi Nama Lengkap, Email, dan Nomor WhatsApp Anda.');
+    return;
+  }
+
+  if (formData.value.phone.length < 9) {
+    alert('Nomor WhatsApp tidak valid (minimal 9 digit angka).');
     return;
   }
 
@@ -276,14 +289,18 @@ const getVaNumber = computed(() => {
 
               <div class="space-y-1.5">
                 <label class="block text-xs font-bold text-emerald-950 uppercase tracking-wider">
-                  Nomor WhatsApp (Grup Halaqah & Notifikasi) *
+                  Nomor WhatsApp (Grup Halaqah &amp; Notifikasi) *
                 </label>
                 <input
-                  v-model="formData.phone"
+                  :value="formData.phone"
                   type="tel"
+                  inputmode="numeric"
+                  pattern="[0-9]*"
+                  maxlength="16"
                   required
-                  placeholder="Contoh: 081234567890"
+                  placeholder="Contoh: 081234567890 (Hanya Angka)"
                   class="w-full px-4 py-2.5 rounded-xl bg-cream-100 border border-cream-300 text-charcoal-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-800"
+                  @input="handlePhoneInput"
                 />
               </div>
 
