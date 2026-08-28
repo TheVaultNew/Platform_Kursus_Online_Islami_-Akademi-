@@ -139,32 +139,74 @@ const getVaNumber = computed(() => {
   <div v-fade-scroll class="py-8 sm:py-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full selection:bg-gold-500/30 selection:text-emerald-950 font-sans">
     
     <!-- Step Tracker Bar -->
-    <div class="mb-8 p-4 sm:p-5 rounded-3xl bg-cream-50 border border-cream-300 shadow-sm flex flex-wrap items-center justify-between gap-3 text-xs sm:text-sm">
-      <div class="flex items-center gap-2">
-        <span
-          class="px-3.5 py-1 rounded-full font-bold uppercase tracking-wider text-xs transition-colors"
-          :class="currentStep === 1 ? 'bg-emerald-900 text-cream-50 shadow' : 'bg-cream-200 text-charcoal-700'"
-        >
-          1. Data & Pilihan Program
-        </span>
-        <span class="text-charcoal-400">➔</span>
-        <span
-          class="px-3.5 py-1 rounded-full font-bold uppercase tracking-wider text-xs transition-colors"
-          :class="currentStep === 2 ? 'bg-emerald-900 text-cream-50 shadow' : 'bg-cream-200 text-charcoal-700'"
-        >
-          2. Checkout Pembayaran
-        </span>
-        <span class="text-charcoal-400">➔</span>
-        <span
-          class="px-3.5 py-1 rounded-full font-bold uppercase tracking-wider text-xs transition-colors"
-          :class="currentStep === 3 ? 'bg-emerald-900 text-cream-50 shadow' : 'bg-cream-200 text-charcoal-700'"
-        >
-          3. Akses Aktif
-        </span>
+    <div class="mb-8 p-3.5 sm:p-5 rounded-3xl bg-cream-50 border border-cream-300 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs sm:text-sm">
+      <!-- Step Indicator: Responsive Progress Steps -->
+      <div class="flex items-center gap-1 sm:gap-2">
+        <!-- Step 1 -->
+        <div class="flex items-center gap-1.5 min-w-0">
+          <span
+            class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 transition-colors"
+            :class="currentStep === 1 ? 'bg-emerald-900 text-cream-50 shadow' : currentStep > 1 ? 'bg-emerald-700 text-gold-300' : 'bg-cream-200 text-charcoal-700'"
+          >
+            {{ currentStep > 1 ? '✓' : '1' }}
+          </span>
+          <span
+            class="text-[11px] sm:text-xs font-bold transition-colors whitespace-nowrap"
+            :class="currentStep === 1 ? 'text-emerald-950 font-extrabold' : currentStep > 1 ? 'text-emerald-800' : 'text-charcoal-500'"
+          >
+            <span class="hidden sm:inline">Data &amp; Pilihan Program</span>
+            <span class="sm:hidden">Data &amp; Program</span>
+          </span>
+        </div>
+
+        <!-- Arrow 1→2 -->
+        <span class="text-charcoal-400 text-xs shrink-0">›</span>
+
+        <!-- Step 2 -->
+        <div class="flex items-center gap-1.5 min-w-0">
+          <span
+            class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 transition-colors"
+            :class="currentStep === 2 ? 'bg-emerald-900 text-cream-50 shadow' : currentStep > 2 ? 'bg-emerald-700 text-gold-300' : 'bg-cream-200 text-charcoal-700'"
+          >
+            {{ currentStep > 2 ? '✓' : '2' }}
+          </span>
+          <span
+            class="text-[11px] sm:text-xs font-bold transition-colors whitespace-nowrap"
+            :class="currentStep === 2 ? 'text-emerald-950 font-extrabold' : currentStep > 2 ? 'text-emerald-800' : 'text-charcoal-500'"
+          >
+            <span class="hidden sm:inline">Checkout Pembayaran</span>
+            <span class="sm:hidden">Checkout</span>
+          </span>
+        </div>
+
+        <!-- Arrow 2→3 -->
+        <span class="text-charcoal-400 text-xs shrink-0">›</span>
+
+        <!-- Step 3 -->
+        <div class="flex items-center gap-1.5 min-w-0">
+          <span
+            class="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-bold shrink-0 transition-colors"
+            :class="currentStep === 3 ? 'bg-emerald-900 text-cream-50 shadow' : 'bg-cream-200 text-charcoal-700'"
+          >
+            {{ currentStep === 3 ? '✓' : '3' }}
+          </span>
+          <span
+            class="text-[11px] sm:text-xs font-bold transition-colors whitespace-nowrap"
+            :class="currentStep === 3 ? 'text-emerald-950 font-extrabold' : 'text-charcoal-500'"
+          >
+            <span class="hidden sm:inline">Akses Aktif</span>
+            <span class="sm:hidden">Aktif</span>
+          </span>
+        </div>
       </div>
 
-      <NuxtLink to="/login" class="text-emerald-900 font-bold hover:text-gold-700 underline text-xs">
-        Sudah pernah daftar? Masuk ke Mulai Belajar →
+      <!-- Login Link -->
+      <NuxtLink
+        to="/login"
+        class="text-emerald-900 font-bold hover:text-gold-700 underline text-xs pt-2.5 md:pt-0 border-t md:border-t-0 border-cream-200/80 inline-flex items-center gap-1 transition-colors"
+      >
+        <span>Sudah pernah daftar? Masuk ke Mulai Belajar</span>
+        <span class="text-gold-600 font-bold">→</span>
       </NuxtLink>
     </div>
 
@@ -312,7 +354,7 @@ const getVaNumber = computed(() => {
             <label class="block text-xs font-bold text-emerald-950 uppercase tracking-wider">
               3. Pilih Metode Pembayaran
             </label>
-            <div class="grid grid-cols-3 gap-2.5">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
               <label
                 class="p-3 rounded-xl border flex flex-col items-center justify-center text-center cursor-pointer transition-all"
                 :class="formData.paymentMethod === 'qris' ? 'bg-emerald-900 text-cream-50 border-emerald-900 ring-2 ring-gold-400 font-bold shadow' : 'bg-cream-100 border-cream-300 text-charcoal-700'"
