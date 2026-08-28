@@ -337,23 +337,23 @@ const getVaNumber = computed(() => {
               </div>
 
               <!-- Action Submit to Step 2 (Checkout) -->
-              <div class="pt-3 border-t border-cream-200 flex items-center justify-end gap-3">
+              <div class="pt-3 border-t border-cream-200 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-2.5 sm:gap-3">
                 <button
                   type="button"
-                  class="px-4 py-2.5 rounded-xl border border-charcoal-300 text-charcoal-700 hover:bg-cream-200 text-xs font-semibold cursor-pointer"
+                  class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-charcoal-300 text-charcoal-700 hover:bg-cream-200 text-xs font-semibold cursor-pointer text-center transition-colors"
                   @click="handleClose"
                 >
-                  Batal
+                  Batal &amp; Kembali
                 </button>
 
                 <button
                   type="submit"
                   :disabled="isProcessing"
-                  class="px-7 py-3 rounded-xl bg-emerald-900 hover:bg-emerald-850 text-cream-50 text-xs sm:text-sm font-bold shadow-md transition-all flex items-center gap-2 cursor-pointer disabled:opacity-50 active:scale-95"
+                  class="w-full sm:w-auto px-7 py-3 rounded-xl bg-emerald-900 hover:bg-emerald-850 text-cream-50 text-xs sm:text-sm font-bold shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50 active:scale-95"
                 >
-                  <span v-if="!isProcessing">Lanjutkan Pembayaran</span>
+                  <span v-if="!isProcessing">Lanjutkan ke Pembayaran</span>
                   <span v-else>Mempersiapkan Checkout...</span>
-                  <ArrowRight class="w-4 h-4 text-gold-400" />
+                  <ArrowRight class="w-4 h-4 text-gold-400 shrink-0" />
                 </button>
               </div>
 
@@ -509,10 +509,10 @@ const getVaNumber = computed(() => {
                 <span v-else>Memverifikasi Pembayaran...</span>
               </button>
 
-              <div class="flex items-center justify-between gap-3 text-xs pt-1">
+              <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 text-xs pt-1">
                 <button
                   type="button"
-                  class="text-charcoal-600 hover:text-emerald-900 flex items-center gap-1 font-semibold cursor-pointer"
+                  class="text-charcoal-600 hover:text-emerald-900 flex items-center justify-center sm:justify-start gap-1 font-semibold cursor-pointer py-1.5 px-3 rounded-lg hover:bg-cream-200/60 w-full sm:w-auto text-center sm:text-left transition-colors"
                   @click="currentStep = 1"
                 >
                   <ArrowLeft class="w-3.5 h-3.5" />
@@ -523,7 +523,7 @@ const getVaNumber = computed(() => {
                   :href="`https://wa.me/6281299008822?text=Assalamu'alaikum%20Admin,%20saya%20sudah%20melakukan%20pembayaran%20untuk%20invoice%20${orderId}%20atas%20nama%20${encodeURIComponent(formData.name)}`"
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="text-emerald-900 hover:text-gold-700 font-bold flex items-center gap-1 cursor-pointer underline"
+                  class="text-emerald-900 hover:text-gold-700 font-bold flex items-center justify-center gap-1 cursor-pointer underline py-1.5 px-3 rounded-lg hover:bg-emerald-900/5 w-full sm:w-auto text-center transition-colors"
                 >
                   <MessageSquare class="w-3.5 h-3.5" />
                   <span>Konfirmasi via WhatsApp</span>
