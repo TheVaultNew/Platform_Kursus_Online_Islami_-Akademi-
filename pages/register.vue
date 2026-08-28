@@ -19,7 +19,9 @@ import {
   Download,
   MessageSquare,
   Award,
-  HeartHandshake
+  HeartHandshake,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-vue-next';
 import { COURSES_DATA } from '~/data/coursesData';
 
@@ -36,6 +38,7 @@ useHead({
 
 // Step state: 1 = Form Pendaftaran, 2 = Checkout, 3 = Sukses
 const currentStep = ref<1 | 2 | 3>(1);
+const isCourseDropdownOpen = ref(false);
 
 const formData = ref({
   programType: 'course' as 'course' | 'annual' | 'scholarship',
@@ -56,6 +59,11 @@ const orderDate = ref('');
 const selectedCourse = computed(() => {
   return COURSES_DATA.find(c => c.id === formData.value.selectedCourseId) || COURSES_DATA[0];
 });
+
+const selectCourse = (courseId: string) => {
+  formData.value.selectedCourseId = courseId;
+  isCourseDropdownOpen.value = false;
+};
 
 const calculatedPrice = computed(() => {
   if (formData.value.programType === 'scholarship') return 0;
@@ -277,19 +285,90 @@ const getVaNumber = computed(() => {
             </div>
           </div>
 
-          <!-- Dropdown Pilihan Kursus jika pilih kursus satuan -->
-          <div v-if="formData.programType === 'course'" class="space-y-1.5">
+          <!-- Dropdown Pilihan Kursus jika pilih kursus satuan (Tata Letak Vertikal) -->
+          <div v-if="formData.programType === 'course'" class="space-y-1.5 relative">
             <label class="block text-xs font-bold text-emerald-950 uppercase tracking-wider">
               Pilih Materi Kursus yang Ingin Dipelajari *
             </label>
-            <select
-              v-model="formData.selectedCourseId"
-              class="w-full px-4 py-3 rounded-xl bg-cream-100 border border-cream-300 text-charcoal-900 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-emerald-800"
+
+            <!-- Custom Dropdown Trigger Button (Vertical Info Layout) -->
+            <button
+              type="button"
+              class="w-full p-3.5 rounded-2xl bg-cream-100 border border-cream-300 hover:border-emerald-800 text-left transition-all flex items-center justify-between gap-3 shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-800"
+              :class="{ 'ring-2 ring-emerald-800 border-emerald-800': isCourseDropdownOpen }"
+              @click="isCourseDropdownOpen = !isCourseDropdownOpen"
             >
-              <option v-for="course in COURSES_DATA" :key="course.id" :value="course.id">
-                {{ course.title }} — {{ formatPrice(course.price) }}
-              </option>
-            </select>
+              <div class="space-y-1 min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-gold-500/20 text-gold-900 border border-gold-500/30">
+                    {{ selectedCourse.categoryName }}
+                  </span>
+                  <span class="text-[11px] text-charcoal-500 font-serif italic">
+                    {{ selectedCourse.instructorName }}
+                  </span>
+                </div>
+                <h4 class="text-xs sm:text-sm font-bold text-emerald-950 leading-snug break-words">
+                  {{ selectedCourse.title }}
+                </h4>
+                <div class="text-xs font-extrabold text-emerald-900">
+                  {{ formatPrice(selectedCourse.price) }}
+                </div>
+              </div>
+
+              <div class="p-2 rounded-xl bg-cream-200 text-emerald-950 shrink-0">
+                <ChevronUp v-if="isCourseDropdownOpen" class="w-4 h-4" />
+                <ChevronDown v-else class="w-4 h-4" />
+              </div>
+            </button>
+
+            <!-- Custom Dropdown Menu List (Vertical Items) -->
+            <div
+              v-if="isCourseDropdownOpen"
+              class="mt-2 rounded-2xl bg-cream-50 border-2 border-emerald-900/30 shadow-2xl overflow-hidden max-h-80 overflow-y-auto divide-y divide-cream-200 z-30 relative"
+            >
+              <button
+                v-for="course in COURSES_DATA"
+                :key="course.id"
+                type="button"
+                class="w-full p-3.5 text-left hover:bg-emerald-900/10 transition-colors flex items-start justify-between gap-3 cursor-pointer"
+                :class="[
+                  formData.selectedCourseId === course.id
+                    ? 'bg-emerald-900/15 border-l-4 border-emerald-900 font-bold'
+                    : 'hover:bg-cream-100'
+                ]"
+                @click="selectCourse(course.id)"
+              >
+                <!-- Item Info Stacked Vertically -->
+                <div class="space-y-1 min-w-0 flex-1">
+                  <div class="flex flex-wrap items-center gap-1.5">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-cream-200 text-charcoal-700">
+                      {{ course.categoryName }}
+                    </span>
+                    <span class="text-[10px] text-charcoal-500 font-serif italic">
+                      {{ course.instructorName }}
+                    </span>
+                  </div>
+
+                  <p class="text-xs sm:text-sm font-bold text-emerald-950 leading-snug break-words">
+                    {{ course.title }}
+                  </p>
+
+                  <p class="text-xs font-bold text-gold-700">
+                    {{ formatPrice(course.price) }}
+                  </p>
+                </div>
+
+                <!-- Check icon if selected -->
+                <div class="shrink-0 pt-1">
+                  <div
+                    class="w-5 h-5 rounded-full flex items-center justify-center text-xs"
+                    :class="formData.selectedCourseId === course.id ? 'bg-emerald-900 text-cream-50' : 'border border-cream-300 text-transparent'"
+                  >
+                    <Check class="w-3.5 h-3.5" />
+                  </div>
+                </div>
+              </button>
+            </div>
           </div>
 
           <!-- Input Identitas Santri -->
