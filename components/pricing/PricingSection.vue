@@ -71,11 +71,11 @@ const formatPrice = (price: number) => {
       </div>
 
       <!-- Pricing Plans Grid -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-start lg:items-stretch">
         <div
           v-for="plan in plans"
           :key="plan.id"
-          class="bg-cream-50 rounded-3xl border hover-lift p-8 flex flex-col justify-between relative"
+          class="bg-cream-50 rounded-3xl border hover-lift p-6 sm:p-8 flex flex-col justify-between relative"
           :class="[
             plan.isPopular
               ? 'border-gold-500 ring-2 ring-gold-500/30 shadow-card-hover bg-gradient-to-b from-cream-50 via-cream-50 to-gold-500/5 lg:-translate-y-2'

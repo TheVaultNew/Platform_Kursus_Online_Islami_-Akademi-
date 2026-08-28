@@ -133,10 +133,10 @@ const getNodeStatusStyles = (status: RoadmapNode['status'], isSelected: boolean)
       />
 
       <!-- Container Visual Jalur Roadmap & Panel Pratinjau Interaktif -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div class="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-start">
         
         <!-- Kolom Kiri: Visual Pathway Nodes (8 Kolom) -->
-        <div class="lg:col-span-8 bg-cream-50 rounded-2xl p-6 sm:p-8 border border-cream-300 shadow-card space-y-8 relative">
+        <div class="w-full lg:col-span-8 bg-cream-50 rounded-2xl p-4 sm:p-6 lg:p-8 border border-cream-300 shadow-card space-y-6 sm:space-y-8 relative order-1">
           
           <!-- Banner Ringkasan Jalur Aktif -->
           <div class="p-5 rounded-xl bg-gradient-to-r from-emerald-950 via-emerald-900 to-navy-900 text-cream-50 space-y-2 border border-gold-500/30">
@@ -262,11 +262,11 @@ const getNodeStatusStyles = (status: RoadmapNode['status'], isSelected: boolean)
 
         </div>
 
-        <!-- Kolom Kanan: Detail Drawer Preview & Panduan Capaian (4 Kolom) -->
-        <div class="lg:col-span-4 space-y-6">
+        <!-- Kolom Kanan: Detail Drawer Preview (4 Kolom) — tampil di bawah di mobile, kanan di lg -->
+        <div class="w-full lg:col-span-4 space-y-6 order-2">
           
-          <!-- Sticky Card Detail Tahapan yang Sedang Dipilih -->
-          <div class="sticky top-28 bg-cream-50 rounded-2xl p-6 border border-cream-300 shadow-card space-y-5">
+          <!-- Sticky Card Detail (sticky hanya di lg+) -->
+          <div class="lg:sticky lg:top-28 bg-cream-50 rounded-2xl p-5 sm:p-6 border border-cream-300 shadow-card space-y-5">
             
             <div class="flex items-center justify-between border-b border-cream-200 pb-3">
               <span class="text-xs font-bold text-emerald-900 uppercase tracking-wider flex items-center gap-1.5">

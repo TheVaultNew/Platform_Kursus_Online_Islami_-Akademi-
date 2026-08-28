@@ -31,7 +31,7 @@ const popularKeywords = ['Fiqih 4 Mazhab', 'Nahwu Al-Jurumiyyah', 'Musthalah Had
           </div>
 
           <!-- Main Headline -->
-          <h1 class="font-display text-3xl sm:text-5xl xl:text-6xl font-bold tracking-tight text-cream-50 leading-[1.15]">
+          <h1 class="font-display text-2xl sm:text-4xl xl:text-6xl font-bold tracking-tight text-cream-50 leading-[1.15] text-balance">
             Menyambung <span class="gold-gradient-text italic font-serif">Sanad Keilmuan</span> Islam Secara Terstruktur.
           </h1>
 
@@ -81,29 +81,29 @@ const popularKeywords = ['Fiqih 4 Mazhab', 'Nahwu Al-Jurumiyyah', 'Musthalah Had
           </div>
 
           <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+          <div class="flex flex-col xs:flex-row sm:flex-row items-stretch xs:items-center justify-center lg:justify-start gap-3 pt-2">
             <a
               href="#learning-path"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-emerald-950 font-semibold shadow-lg shadow-gold-500/25 hover:shadow-gold-glow hover:brightness-105 transition-all flex items-center justify-center gap-2.5 cursor-pointer text-sm sm:text-base"
+              class="w-full xs:w-auto px-6 py-3.5 rounded-xl bg-gradient-to-r from-gold-500 to-gold-600 text-emerald-950 font-semibold shadow-lg shadow-gold-500/25 hover:shadow-gold-glow hover:brightness-105 transition-all flex items-center justify-center gap-2.5 cursor-pointer text-sm sm:text-base"
               @click="$emit('explore-paths')"
             >
-              <Compass class="w-5 h-5 text-emerald-950" />
+              <Compass class="w-5 h-5 text-emerald-950 shrink-0" />
               <span>Jelajahi Visual Learning Path</span>
             </a>
 
             <a
               href="#katalog"
-              class="w-full sm:w-auto px-6 py-3.5 rounded-xl border border-cream-200/30 text-cream-100 hover:bg-cream-100/10 transition-all flex items-center justify-center gap-2 text-sm sm:text-base font-medium"
+              class="w-full xs:w-auto px-6 py-3.5 rounded-xl border border-cream-200/30 text-cream-100 hover:bg-cream-100/10 transition-all flex items-center justify-center gap-2 text-sm sm:text-base font-medium"
             >
-              <BookOpen class="w-5 h-5 text-gold-400" />
+              <BookOpen class="w-5 h-5 text-gold-400 shrink-0" />
               <span>Lihat Katalog Kursus</span>
             </a>
           </div>
 
         </div>
 
-        <!-- Right Column: Visual Editorial Showcase Card -->
-        <div class="lg:col-span-5">
+        <!-- Right Column: Visual Editorial Showcase Card (hidden on mobile, visible lg+) -->
+        <div class="hidden lg:block lg:col-span-5">
           <div class="relative max-w-md mx-auto lg:max-w-none">
             
             <!-- Glow background border -->
@@ -194,25 +194,25 @@ const popularKeywords = ['Fiqih 4 Mazhab', 'Nahwu Al-Jurumiyyah', 'Musthalah Had
       </div>
 
       <!-- Key Metrics Stats Bar -->
-      <div class="mt-16 pt-10 border-t border-emerald-850/80 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
-        <div class="space-y-1 text-center sm:text-left">
+      <div class="mt-12 sm:mt-16 pt-8 sm:pt-10 border-t border-emerald-850/80 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
+        <div class="space-y-1 text-center">
           <p class="font-display text-2xl sm:text-4xl font-bold text-gold-400">12.500+</p>
-          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Penuntut Ilmu & Santri Aktif</p>
+          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Penuntut Ilmu &amp; Santri Aktif</p>
         </div>
 
-        <div class="space-y-1 text-center sm:text-left">
+        <div class="space-y-1 text-center">
           <p class="font-display text-2xl sm:text-4xl font-bold text-gold-400">45+</p>
-          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Asatidz & Masyayikh Bersanad</p>
+          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Asatidz &amp; Masyayikh Bersanad</p>
         </div>
 
-        <div class="space-y-1 text-center sm:text-left">
+        <div class="space-y-1 text-center">
           <p class="font-display text-2xl sm:text-4xl font-bold text-gold-400">180+</p>
-          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Modul Kajian & Kitab Turats</p>
+          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Modul Kajian &amp; Kitab Turats</p>
         </div>
 
-        <div class="space-y-1 text-center sm:text-left">
+        <div class="space-y-1 text-center">
           <p class="font-display text-2xl sm:text-4xl font-bold text-gold-400">98%</p>
-          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Tingkat Kepuasan & Kelulusan</p>
+          <p class="text-xs sm:text-sm text-cream-200/80 font-light">Tingkat Kepuasan &amp; Kelulusan</p>
         </div>
       </div>
 

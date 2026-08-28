@@ -74,28 +74,29 @@ const closeMobileMenu = () => {
           </NuxtLink>
         </nav>
 
-        <!-- Right: Action Buttons (Mendatar) -->
-        <div class="hidden sm:flex items-center gap-2.5 shrink-0">
+        <!-- Right: Action Buttons -->
+        <div class="flex items-center gap-2 shrink-0">
+          <!-- Daftar link: hanya di sm+ -->
           <NuxtLink
             to="/register"
-            class="px-4 py-2 text-xs xl:text-sm font-bold text-emerald-900 hover:text-emerald-850 hover:bg-emerald-900/10 rounded-xl transition-colors whitespace-nowrap"
+            class="hidden sm:inline-flex px-4 py-2 text-xs xl:text-sm font-bold text-emerald-900 hover:text-emerald-850 hover:bg-emerald-900/10 rounded-xl transition-colors whitespace-nowrap"
           >
             Daftar
           </NuxtLink>
+
+          <!-- CTA Mulai Belajar: selalu tampil tapi di mobile lebih kecil -->
           <NuxtLink
             to="/login"
-            class="px-4 xl:px-5 py-2.5 rounded-xl bg-emerald-900 text-cream-50 hover:bg-emerald-850 text-xs xl:text-sm font-semibold shadow-md shadow-emerald-950/15 hover:shadow-lg transition-all flex items-center gap-2 cursor-pointer active:scale-95 whitespace-nowrap"
+            class="hidden sm:flex px-4 xl:px-5 py-2.5 rounded-xl bg-emerald-900 text-cream-50 hover:bg-emerald-850 text-xs xl:text-sm font-semibold shadow-md shadow-emerald-950/15 hover:shadow-lg transition-all items-center gap-2 cursor-pointer active:scale-95 whitespace-nowrap"
           >
             <Sparkles class="w-4 h-4 text-gold-400 shrink-0" />
             <span>Mulai Belajar</span>
           </NuxtLink>
-        </div>
 
-        <!-- Mobile Hamburger Button -->
-        <div class="flex lg:hidden items-center gap-2">
+          <!-- Hamburger: hanya di < lg -->
           <button
             type="button"
-            class="p-2 rounded-lg text-charcoal-700 hover:text-emerald-900 hover:bg-emerald-900/10 focus-visible:outline-none"
+            class="flex lg:hidden p-2 rounded-lg text-charcoal-700 hover:text-emerald-900 hover:bg-emerald-900/10 focus-visible:outline-none min-w-[40px] min-h-[40px] items-center justify-center"
             :aria-expanded="isMobileMenuOpen"
             aria-label="Buka menu navigasi"
             @click="toggleMobileMenu"
@@ -142,21 +143,21 @@ const closeMobileMenu = () => {
           </NuxtLink>
         </div>
 
-        <div class="pt-3 border-t border-cream-200 space-y-2">
+        <div class="pt-3 border-t border-cream-200 space-y-2.5">
           <NuxtLink
             to="/register"
-            class="w-full py-2.5 rounded-xl border border-emerald-900 text-emerald-900 font-bold text-center block text-sm"
+            class="w-full py-3 rounded-xl border-2 border-emerald-900 text-emerald-900 font-bold text-center block text-sm hover:bg-emerald-900/5 transition-colors"
             @click="closeMobileMenu"
           >
             Daftar Santri Baru
           </NuxtLink>
           <NuxtLink
             to="/login"
-            class="w-full py-3 rounded-xl bg-emerald-900 text-cream-50 font-semibold text-center flex items-center justify-center gap-2 shadow-md text-sm"
+            class="w-full py-3.5 rounded-xl bg-emerald-900 text-cream-50 font-semibold text-center flex items-center justify-center gap-2 shadow-lg text-sm hover:bg-emerald-850 transition-colors"
             @click="closeMobileMenu"
           >
             <Sparkles class="w-4 h-4 text-gold-400" />
-            <span>Mulai Belajar (Login Santri)</span>
+            <span>Masuk Ruang Belajar</span>
           </NuxtLink>
         </div>
       </div>

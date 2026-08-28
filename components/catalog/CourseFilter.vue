@@ -34,54 +34,49 @@ defineEmits<{
 </script>
 
 <template>
-  <div class="space-y-6">
-    <!-- Search Bar & Quick Toggles -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
-      
-      <!-- Search Input (7 Kolom) -->
-      <div class="md:col-span-6 lg:col-span-7 relative">
-        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-charcoal-400">
-          <Search class="w-4 h-4 text-emerald-900" />
-        </div>
+  <div class="space-y-4 sm:space-y-6">
+    <!-- Search Bar -->
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-charcoal-400">
+        <Search class="w-4 h-4 text-emerald-900" />
+      </div>
+      <input
+        :value="searchQuery"
+        type="text"
+        placeholder="Cari materi: Fiqih, Nahwu, Hadits, Tafsir, Sirah..."
+        class="w-full pl-10 pr-4 py-3 rounded-xl bg-cream-50 border border-cream-300 text-charcoal-900 placeholder:text-charcoal-500 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-800 shadow-sm"
+        @input="$emit('update:searchQuery', ($event.target as HTMLInputElement).value)"
+      />
+    </div>
+
+    <!-- Sanad Toggle + Sort Row -->
+    <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+      <!-- Sanad Toggle -->
+      <label
+        class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-medium cursor-pointer transition-colors"
+        :class="onlySanadCertified ? 'bg-gold-500/20 border-gold-500 text-gold-900 font-semibold' : 'bg-cream-50 border-cream-300 text-charcoal-700 hover:bg-cream-200/60'"
+      >
         <input
-          :value="searchQuery"
-          type="text"
-          placeholder="Cari materi: Fiqih, Nahwu, Hadits, Tafsir, Sirah..."
-          class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-cream-50 border border-cream-300 text-charcoal-900 placeholder:text-charcoal-500 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-800 shadow-sm"
-          @input="$emit('update:searchQuery', ($event.target as HTMLInputElement).value)"
+          type="checkbox"
+          :checked="onlySanadCertified"
+          class="rounded text-gold-600 focus:ring-gold-500 cursor-pointer"
+          @change="$emit('update:onlySanadCertified', ($event.target as HTMLInputElement).checked)"
         />
-      </div>
+        <Award class="w-3.5 h-3.5 text-gold-600" />
+        <span>Hanya Bersanad</span>
+      </label>
 
-      <!-- Sanad Checkbox Toggle & Sort (5 Kolom) -->
-      <div class="md:col-span-6 lg:col-span-5 flex items-center justify-between md:justify-end gap-3">
-        <!-- Sanad Toggle -->
-        <label
-          class="inline-flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-medium cursor-pointer transition-colors"
-          :class="onlySanadCertified ? 'bg-gold-500/20 border-gold-500 text-gold-900 font-semibold' : 'bg-cream-50 border-cream-300 text-charcoal-700 hover:bg-cream-200/60'"
-        >
-          <input
-            type="checkbox"
-            :checked="onlySanadCertified"
-            class="rounded text-gold-600 focus:ring-gold-500 cursor-pointer"
-            @change="$emit('update:onlySanadCertified', ($event.target as HTMLInputElement).checked)"
-          />
-          <Award class="w-3.5 h-3.5 text-gold-600" />
-          <span>Hanya Bersanad</span>
-        </label>
-
-        <!-- Sorting Select -->
-        <select
-          :value="sortBy"
-          class="px-3 py-2 rounded-xl bg-cream-50 border border-cream-300 text-charcoal-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-emerald-800 shadow-sm cursor-pointer"
-          @change="$emit('update:sortBy', ($event.target as HTMLSelectElement).value)"
-        >
-          <option value="popular">Paling Populer</option>
-          <option value="rating">Rating Tertinggi</option>
-          <option value="price-asc">Investasi: Rendah ke Tinggi</option>
-          <option value="price-desc">Investasi: Tinggi ke Rendah</option>
-        </select>
-      </div>
-
+      <!-- Sorting Select -->
+      <select
+        :value="sortBy"
+        class="px-3 py-2 rounded-xl bg-cream-50 border border-cream-300 text-charcoal-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-emerald-800 shadow-sm cursor-pointer"
+        @change="$emit('update:sortBy', ($event.target as HTMLSelectElement).value)"
+      >
+        <option value="popular">Paling Populer</option>
+        <option value="rating">Rating Tertinggi</option>
+        <option value="price-asc">Investasi: Rendah ke Tinggi</option>
+        <option value="price-desc">Investasi: Tinggi ke Rendah</option>
+      </select>
     </div>
 
     <!-- Category Pills Tabs -->

@@ -54,7 +54,7 @@ const methodologyPillars = [
       </div>
 
       <!-- 4 Pillars Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
         <div
           v-for="pillar in methodologyPillars"
           :key="pillar.number"
@@ -93,8 +93,8 @@ const methodologyPillars = [
       </div>
 
       <!-- Interactive Learning Experience Preview Card -->
-      <div class="bg-gradient-to-r from-navy-950 via-emerald-950 to-navy-950 rounded-3xl p-8 sm:p-10 border border-gold-500/30 shadow-2xl space-y-6">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="bg-gradient-to-r from-navy-950 via-emerald-950 to-navy-950 rounded-3xl p-6 sm:p-8 lg:p-10 border border-gold-500/30 shadow-2xl space-y-6">
+        <div class="flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           <div class="lg:col-span-6 space-y-4">
             <span class="px-3 py-1 rounded-full bg-gold-500/20 text-gold-400 text-xs font-semibold uppercase tracking-wider">

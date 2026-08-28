@@ -67,6 +67,38 @@
 }
 
 /* ========================================================= */
+/* MOBILE UTILITIES                                           */
+/* ========================================================= */
+
+/* Hide scrollbar for horizontal pill/tab scroll */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Better tap target for mobile buttons */
+button, a, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Safe area padding for notch/island devices */
+.safe-top {
+  padding-top: env(safe-area-inset-top);
+}
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Prevent text overflow on small screens */
+.text-balance {
+  text-wrap: balance;
+}
+
+/* ========================================================= */
 /* PAGE & ROUTE TRANSITIONS                                  */
 /* ========================================================= */
 .page-enter-active,

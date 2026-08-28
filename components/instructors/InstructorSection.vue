@@ -40,7 +40,7 @@ const closeSanad = () => {
       </div>
 
       <!-- Grid Asatidz Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8">
         <div
           v-for="ins in instructors"
           :key="ins.id"

@@ -141,11 +141,11 @@ const handleAction = (message: string) => {
     <!-- ========================================================= -->
     <!-- CASE 1: FORM LOGIN (BELUM LOGIN)                          -->
     <!-- ========================================================= -->
-    <main v-if="!isLoggedIn" class="flex-1 flex items-center justify-center py-10 sm:py-16 px-4 sm:px-6 lg:px-8">
-      <div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <main v-if="!isLoggedIn" class="flex-1 flex items-center justify-center py-8 sm:py-16 px-4 sm:px-6 lg:px-8">
+      <div class="w-full max-w-lg lg:max-w-4xl lg:grid lg:grid-cols-12 gap-8 items-center">
         
-        <!-- Left Column: Editorial Islam Card with High Contrast -->
-        <div class="lg:col-span-5 bg-gradient-to-br from-emerald-950 via-emerald-900 to-navy-950 text-cream-50 p-8 sm:p-10 rounded-3xl border-2 border-gold-400/70 shadow-2xl space-y-6 relative overflow-hidden bg-arabesque-dark">
+        <!-- Left Column: Editorial Islam Card — Tersembunyi di mobile, tampil di lg -->
+        <div class="hidden lg:block lg:col-span-5 bg-gradient-to-br from-emerald-950 via-emerald-900 to-navy-950 text-cream-50 p-8 sm:p-10 rounded-3xl border-2 border-gold-400/70 shadow-2xl space-y-6 relative overflow-hidden bg-arabesque-dark">
           <div class="absolute -right-16 -top-16 w-60 h-60 bg-gold-500/20 rounded-full blur-3xl pointer-events-none" />
           <div class="absolute -left-16 -bottom-16 w-60 h-60 bg-emerald-700/20 rounded-full blur-3xl pointer-events-none" />
           
@@ -185,7 +185,7 @@ const handleAction = (message: string) => {
         </div>
 
         <!-- Right Column: Login Card -->
-        <div class="lg:col-span-7 bg-cream-50 p-7 sm:p-10 rounded-3xl border border-cream-300 shadow-xl space-y-6">
+        <div class="lg:col-span-7 bg-cream-50 p-6 sm:p-8 lg:p-10 rounded-3xl border border-cream-300 shadow-xl space-y-5 sm:space-y-6">
           
           <div class="space-y-1.5">
             <h3 class="font-display text-2xl font-bold text-emerald-950">
@@ -336,10 +336,10 @@ const handleAction = (message: string) => {
     <!-- ========================================================= -->
     <!-- CASE 2: DASHBOARD RUANG BELAJAR SANTRI (SETELAH LOGIN)    -->
     <!-- ========================================================= -->
-    <main v-else class="flex-1 py-8 sm:py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-8">
+    <main v-else class="flex-1 py-6 sm:py-8 lg:py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full space-y-6 sm:space-y-8">
       
       <!-- Welcome Header Banner -->
-      <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-emerald-950 via-emerald-900 to-navy-950 text-cream-50 border border-gold-500/40 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 relative overflow-hidden bg-arabesque-dark">
+      <div class="p-5 sm:p-6 lg:p-8 rounded-3xl bg-gradient-to-r from-emerald-950 via-emerald-900 to-navy-950 text-cream-50 border border-gold-500/40 shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6 relative overflow-hidden bg-arabesque-dark">
         <div class="space-y-2 z-10">
           <div class="flex items-center gap-2">
             <span class="px-3 py-0.5 rounded-full bg-gold-400 text-emerald-950 text-xs font-bold uppercase tracking-wider">

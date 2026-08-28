@@ -9,7 +9,7 @@ import { ShieldCheck, BookOpen, Award, HeartHandshake, Mail, Phone, MapPin } fro
     <div class="absolute bottom-0 left-10 w-80 h-80 bg-emerald-800/10 rounded-full blur-3xl pointer-events-none" />
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-emerald-850">
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 sm:gap-10 pb-12 border-b border-emerald-850">
         
         <!-- Col 1: Brand & Philosophy -->
         <div class="lg:col-span-2 space-y-4">
@@ -79,10 +79,10 @@ import { ShieldCheck, BookOpen, Award, HeartHandshake, Mail, Phone, MapPin } fro
       </div>
 
       <!-- Bottom Bar -->
-      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cream-300/70">
-        <p>© {{ new Date().getFullYear() }} Darul Hikmah Academy. Hak Cipta Dilindungi Undang-Undang.</p>
-        <div class="flex items-center gap-6">
-          <a href="#" class="hover:text-gold-400 transition-colors">Syarat & Ketentuan</a>
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-cream-300/70">
+        <p class="text-center sm:text-left">© {{ new Date().getFullYear() }} Darul Hikmah Academy. Hak Cipta Dilindungi Undang-Undang.</p>
+        <div class="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-6">
+          <a href="#" class="hover:text-gold-400 transition-colors">Syarat &amp; Ketentuan</a>
           <a href="#" class="hover:text-gold-400 transition-colors">Kebijakan Privasi</a>
           <a href="#" class="hover:text-gold-400 transition-colors">Panduan Adab Belajar</a>
           <span class="inline-flex items-center gap-1 text-gold-400/90 font-medium">

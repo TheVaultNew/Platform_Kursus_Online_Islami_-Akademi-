@@ -67,7 +67,7 @@ const testimonials = TESTIMONIALS_DATA;
               </div>
             </div>
 
-            <div class="text-right hidden sm:block">
+            <div class="text-right">
               <span class="text-[11px] text-charcoal-500 block">Jalur yang Ditempuh:</span>
               <span class="text-xs font-semibold text-emerald-900">{{ item.learningPathTaken }}</span>
             </div>
