@@ -1,6 +1,8 @@
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.directive('fade-scroll', {
     mounted(el: HTMLElement & { _scrollObserver?: IntersectionObserver }) {
+      if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+
       el.classList.add('scroll-fade-init');
       
       const observer = new IntersectionObserver(
@@ -26,6 +28,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       if (el._scrollObserver) {
         el._scrollObserver.disconnect();
       }
+    },
+    getSSRProps() {
+      return {};
     }
   });
 });
