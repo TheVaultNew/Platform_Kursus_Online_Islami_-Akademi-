@@ -1,5 +1,9 @@
 # Darul Hikmah Academy - Platform Kursus Online Islami Bersanad
 
+<p align="center">
+  <img src="docs/preview.png" alt="Darul Hikmah Academy Preview" width="100%" />
+</p>
+
 Darul Hikmah Academy adalah website platform kursus online Islam ilmiah bergaya editorial MOOC premium yang dibangun dengan Nuxt 3, TypeScript, dan Tailwind CSS. Website ini dirancang khusus untuk memfasilitasi pembelajaran ilmu syar'i klasik dan kontemporer dari jenjang pemula hingga bersanad secara terstruktur, interaktif, dan mudah diakses oleh santri, mahasiswa, profesional, maupun masyarakat luas. Platform ini mengusung kekayaan khazanah Turats Islam dengan tetap menjunjung tinggi prinsip adab ikhtilaf dan keterbukaan madzhab (*wasathiyah*).
 
 ---
